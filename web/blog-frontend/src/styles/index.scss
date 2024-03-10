@@ -1,0 +1,115 @@
+//scss 语法糖包含常用的布局方式 flex column
+@import './scss-sugar.scss';
+//重置 element-plus 样式
+@import './reset-elemenet-plus-style.scss';
+@import "./theme.scss";
+//@import "./mixin";
+@import "./transition.scss";
+@import "./doubleLink";
+@import "./shadow";
+@import "./custom";
+
+//reset style
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: 华文楷体,serif;
+  color: var(--text-color);
+
+  transition: color .3s, background-color .5s;
+}
+* {
+  box-sizing: border-box;
+  //transition: color .3s;
+}
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+a {
+  color: var(--color-orange);
+  text-decoration: none;
+}
+a:focus,
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-aqua);
+  font-weight: bold;
+}
+
+.h0 {
+  font-size: 4.7em;
+  font-weight: bold;
+}
+h2 {
+  line-height: 1.5;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+span,
+output {
+  display: inline-block;
+  line-height: 1;
+}
+
+//scroll
+@mixin main-show-wh() {
+  /* css 声明 */
+  //height: calc(100vh - #{$navBarHeight} - #{$tagViewHeight} - #{$appMainPadding * 2});
+  height: calc(100vh - #{var(--nav-bar-height)} - #{var(--tag-view-height)} - #{calc(var(--app-main-padding) * 2)});
+  width: 100%;
+}
+.scroll-y {
+  @include main-show-wh();
+  overflow-y: auto;
+}
+.scroll-x {
+  @include main-show-wh();
+  overflow-x: auto;
+}
+.scroll-xy {
+  @include main-show-wh();
+  overflow: auto;
+}
+
+.slide-in-container {
+  animation: slideUpIn 1s;
+}
+
+//滚动条
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+::-webkit-scrollbar-track { //轨道部分
+  background: #1f1d1d;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb { //滑块
+  background: linear-gradient(180deg, #886fd0, #10A44A);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { //滑块鼠标悬浮
+  background: linear-gradient(180deg, #e0445f, #10A44A);
+}
+::-webkit-scrollbar-corner {
+  background-color: #29b076;
+}
+

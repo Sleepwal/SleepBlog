@@ -1,0 +1,40 @@
+.white-shadow {
+  box-shadow:  10px 10px 40px #bebebe,
+  -10px -10px 40px #ffffff;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0 0 0 #bebebe,
+    0 0 0 #ffffff,
+    inset 10px 0 5px #bebebe,
+    inset -0px -0px 5px #ffffff;
+  }
+}
+
+.white-dark-shadow-border {
+  border: 1px solid var(--grey-3);
+  box-shadow: 12px 17px 51px var(--grey-9-a1);
+  transition: .5s;
+
+  &:hover {
+    border: 1px solid var(--grey-9);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, .05);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 1px 1px 6px rgba(255,255,255,0.3), 2px 2px 15px rgba(0,0,0,0.5);
+  transition: .3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.9), 4px 4px 25px rgba(255,255,255,0.9);
+  }
+}

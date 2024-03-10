@@ -1,0 +1,34 @@
+//leave the padding of  el-scroll sidebar
+.el-scrollbar{
+  height: 100%;
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+  .el-scrollbar__bar{
+    // 默认展示滚动条
+    opacity: 1;
+  }
+  .el-scrollbar__thumb{
+    // 改变滚动条颜色
+    background: linear-gradient(180deg, #70cb94, #e3cb57);
+  }
+  .el-scrollbar__view {
+    padding-bottom: 80px;
+  }
+  .el-scrollbar{
+    --el-menu-base-level-padding:15px;
+  }
+}
+
+//分页框颜色
+.pagination {
+  .el-pagination.is-background .el-pager li:not(.is-disabled).is-active {
+    background-color: var(--color-orange);
+  }
+}
+
+//icon对齐文字
+.el-icon {
+  vertical-align: -20%
+}
+
