@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sleep.mapper.ChatMapper">
+    <select id="selectAllChatMessages" resultType="com.sleep.domain.vo.front.ChatMessagesVo">
+        select u.nickname as name, u.avatar, c.content, c.create_time as time
+        from user u
+                 join chat c on u.id = c.create_by
+    </select>
+
+</mapper>
