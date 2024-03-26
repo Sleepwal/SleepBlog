@@ -12,12 +12,7 @@
 
       <!--   切换主题   -->
       <div class="mt-1">
-        <span @click="changeTheme()" class="option-button-item"
-             v-if="theme !== 'dark'" type="info">
-          <el-icon><Moon /></el-icon></span>
-        <span @click="changeTheme()" class="option-button-item"
-             v-else type="warning">
-          <el-icon><Sunny /></el-icon></span>
+        <ThemeButton/>
       </div>
 
       <!--   回到顶部   -->
@@ -49,35 +44,19 @@
 
   <!--   切换主题   -->
   <div class="mt-1 login-reg-show" v-if="route.meta.title === '登录' || route.meta.title === '注册'">
-        <span @click="changeTheme()" class="login-reg-show-btn"
-              v-if="theme !== 'dark'" type="info">
-          <el-icon><Moon /></el-icon></span>
-    <span @click="changeTheme()" class="login-reg-show-btn"
-          v-else type="warning">
-          <el-icon><Sunny /></el-icon></span>
+    <ThemeButton/>
   </div>
 </template>
 
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
-import {useSystemStore} from "@/stores/system";
 import {useEventListener} from "@vueuse/core";
 import SearchItem from "@/layout/sidebar/SearchItem.vue";
 import ElSvgIcon from "@/components/ElSvgIcon.vue";
 import { useRoute } from "vue-router";
+import ThemeButton from "@/layout/sidebar/ThemeButton.vue";
 
 const route = useRoute()
-
-//主题
-const theme = ref(useSystemStore().getTheme())
-document.documentElement.setAttribute('class', theme.value) //初始化
-
-const changeTheme = () => {
-  let tmp = theme.value === 'dark' ? 'light' : 'dark'
-  document.documentElement.setAttribute('class', tmp)
-  theme.value = tmp
-  useSystemStore().setTheme(tmp)
-}
 
 //显示设置按钮
 const process = ref(0);
@@ -145,7 +124,6 @@ onBeforeUnmount(() => {
   }
 
   .option-button-item {
-    //width: 40px;
     @include my-btn-border;
   }
 

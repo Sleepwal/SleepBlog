@@ -1,7 +1,7 @@
 <template>
   <div class="search-item-body">
     <span @click="showSearch" class="search-button">
-      <el-icon><Search /></el-icon>
+      搜索<el-icon><Search /></el-icon>
     </span>
 
     <el-dialog v-model="dialogConfig.dialogVisible"
@@ -50,14 +50,14 @@ const showSearch = () => {
   dialogConfig.dialogVisible = true
 }
 
-const searchText = ref('')
+const searchText = ref()
 const result = reactive({
   articles: [],
   count: '',
 })
 
 const searchSub = async () => {
-  if(!searchText) return
+  if(!searchText.value) return
 
   let res = await articleSearch(searchText.value)
 
@@ -82,30 +82,17 @@ const searchSub = async () => {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+@import "@/styles/mixin.scss"
 
-.search-item-body {
-
-  .search-button {
-    @include my-btn-border;
-  }
-
-  .search-result {
-
-    .result-count {
-      color: var(--color-red);
-    }
-
-    .search-result-item {
-      margin-top: 20px;
-
-      a {
-        color: var(--grey-7);
-      }
-    }
-  }
-
-
-}
-
+.search-item-body
+  .search-button
+    @include my-btn-border
+  .search-result
+    .result-count
+      color: var(--color-red)
+    .search-result-item
+      margin-top: 20px
+      a
+        color: var(--grey-7)
 </style>

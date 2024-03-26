@@ -303,7 +303,6 @@ flex布局 第一个字母为主轴
 .br-2 {
   border-radius: 20px;
 }
-
 .br-5 {
   border-radius: 50px;
 }
@@ -320,11 +319,9 @@ flex布局 第一个字母为主轴
 .p-1 {
   padding: 10px;
 }
-
 .p-2 {
   padding: 20px;
 }
-
 .p-5 {
   padding: 50px;
 }
@@ -332,17 +329,20 @@ flex布局 第一个字母为主轴
 .m-1 {
   margin: 10px;
 }
-
-.mt-1 {
-  margin-top: 10px;
-}
-
 .m-2 {
   margin: 20px;
 }
-
 .m-5 {
   margin: 50px;
+}
+.mt-1 {
+  margin-top: 10px;
+}
+.mr-1 {
+  margin-right: 10px;
+}
+.ml-3 {
+  margin-left: 30px;
 }
 
 //背景毛玻璃
@@ -356,6 +356,9 @@ flex布局 第一个字母为主轴
 }
 .fs-1 {
   font-size: 10px;
+}
+.fs-15px {
+  font-size: 15px;
 }
 .fs-2 {
   font-size: 20px;
