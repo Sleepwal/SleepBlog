@@ -1,47 +1,51 @@
 <!-- 头部公用 -->
 <template>
-  <div :class="['header', isShowHigher === true ? 'bg-normal ' : 'bg-bf']">
-    <div :class="['topNav', 'rowBC', isShowHigher === true ? 'height-normal' : 'height-low']">
-      <div class="indexNav rowCC">
-        <div class="logo m-1">
-          <router-link to="/">
-            SleepWalker's Blog
-            <!--            <img :src="logo" alt="SleepWalker's Blog"/>-->
+  <!--  <div :class="['header', isShowHigher === true ? 'bg-normal ' : 'bg-bf']">-->
+  <!--    <div :class="['topNav', 'rowBC', isShowHigher === true ? 'height-normal' : 'height-low']">-->
+  <el-collapse-transition>
+    <div class="header bg-normal" v-if="isShowHigher">
+      <div class="topNav rowBC height-normal">
+        <div class="indexNav rowCC">
+          <div class="logo m-1">
+            <router-link to="/">
+              SleepWalker's Blog
+              <!--            <img :src="logo" alt="SleepWalker's Blog"/>-->
+            </router-link>
+          </div>
+
+          <router-link v-for="item in headerList"
+                       :class="['topNavItem', item.link === activePath ? 'active' : '']"
+                       :to="item.link">
+            <ElSvgIcon :name="item.icon"/>
+            {{ item.name }}
           </router-link>
-        </div>
 
-        <router-link v-for="item in headerList"
-                     :class="['topNavItem', item.link === activePath ? 'active' : '']"
-                     :to="item.link">
-          <ElSvgIcon :name="item.icon" />
-          {{ item.name }}
-        </router-link>
-
-        <el-dropdown>
+          <el-dropdown>
           <span class="el-dropdown-link rowCC">
             其他
-            <el-icon><arrow-down /></el-icon>
+            <el-icon><arrow-down/></el-icon>
           </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item v-for="item in headerOtherList">
-                <router-link :to="item.link">
-                  <ElSvgIcon :name="item.icon" />
-                  {{ item.name }}
-                </router-link>
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item v-for="item in headerOtherList">
+                  <router-link :to="item.link">
+                    <ElSvgIcon :name="item.icon"/>
+                    {{ item.name }}
+                  </router-link>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
 
-      <div class="rowCC">
-        <!--        <SearchItem></SearchItem>-->
+          <span class="ml-3 fs-15px"><SearchItem/></span>
+          <span class="ml-3 fs-15px"><ThemeButton/></span>
+        </div>
 
-        <span v-if="token">
+        <div class="rowCC">
+          <span v-if="token">
           <div class="user-avatar"
                @click="clickShowDropMenu">
-            <el-avatar :src="userInfo.avatar" />
+            <el-avatar :src="userInfo.avatar"/>
           </div>
 
           <el-collapse-transition>
@@ -51,7 +55,7 @@
                 个人中心
               </router-link>
 
-              <el-divider />
+              <el-divider/>
 
               <div class=""
                    style="cursor: pointer"
@@ -62,29 +66,31 @@
           </el-collapse-transition>
         </span>
 
-        <router-link v-else class="topNavItem" to="/Login">
-          <el-icon>
-            <Avatar />
-          </el-icon>
-          登录
-        </router-link>
-      </div>
+          <router-link v-else class="topNavItem" to="/Login">
+            <el-icon>
+              <Avatar/>
+            </el-icon>
+            登录
+          </router-link>
+        </div>
 
+      </div>
     </div>
-  </div>
+  </el-collapse-transition>
 </template>
 
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
-import { useRouter } from "vue-router";
+import {onBeforeUnmount, onMounted, ref, watch} from "vue";
+import {useRouter} from "vue-router";
 import logoUrl from "@/assets/logoPic.png";
-import { userLogout } from "@/api/user";
-import { ElMessage } from "element-plus";
-import { useBasicStore } from "@/stores/basic";
-import { storeToRefs } from "pinia";
+import {userLogout} from "@/api/user";
+import {ElMessage} from "element-plus";
+import {useBasicStore} from "@/stores/basic";
+import {storeToRefs} from "pinia";
 import ElSvgIcon from "@/components/ElSvgIcon.vue";
 import SearchItem from "@/layout/sidebar/SearchItem.vue";
+import ThemeButton from "@/layout/sidebar/ThemeButton.vue";
 
 const logo = ref(logoUrl);
 const router = useRouter();
@@ -103,7 +109,7 @@ const headerList = [
     icon: "PriceTag",
     link: "/tag"
   }, {
-    name: "知识图谱",
+    name: "文章关系图",
     icon: "Histogram",
     link: "/ArticleRelationChart"
   }, {
@@ -145,11 +151,11 @@ const activePath = ref(null);
 watch(() => router, (newVal, oldVal) => {
   activePath.value = newVal.currentRoute.value.meta.activePath;
   // console.log(activePath.value)
-}, { immediate: true, deep: true });
+}, {immediate: true, deep: true});
 
 const basicStore = useBasicStore();
 
-const { token, userInfo } = storeToRefs(basicStore);
+const {token, userInfo} = storeToRefs(basicStore);
 
 const logout = async () => {
   await userLogout();
@@ -265,22 +271,24 @@ const clickShowDropMenu = () => {
 .height-normal {
   height: 60px;
   font-size: 18px;
-  transition: height 0.3s linear, font-size 0.3s ease-out;
+  transition: 0.3s linear;
 }
 
 .height-low {
   height: 45px;
   font-size: 16px;
-  transition: height 0.3s linear, font-size 0.3s ease-out;
+  transition: 0.3s linear;
 }
 
 .bg-normal {
   background: var(--header-bg);
+  transition: 0.3s linear;
 }
 
 .bg-bf {
   background: var(--grey-1-a3);
   backdrop-filter: saturate(180%) blur(20px);
+  transition: 0.3s linear;
 }
 
 </style>

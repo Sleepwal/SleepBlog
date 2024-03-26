@@ -1,6 +1,6 @@
 <template>
   <div class="out-box">
-    <div class="frame-header">
+    <div>
         <Header></Header>
     </div>
 
@@ -31,8 +31,6 @@ import ToolsBar from "@/layout/sidebar/ToolsBar.vue";
   //margin-right: calc(100% - 100vw);
 
   .frameContent {
-
-    padding-top: 3%;
     @include custom-border-bottom(100%);
   }
 
