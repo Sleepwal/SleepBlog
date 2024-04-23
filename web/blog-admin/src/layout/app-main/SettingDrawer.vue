@@ -10,7 +10,7 @@
         <h2>设置</h2>
       </template>
 
-<!--      <div class="mt-10px mr-5">
+      <div class="mt-10px mr-5">
         <div class="font-bold mb-20px">设置</div>
         <fieldset>
           <legend>主题设置</legend>
@@ -33,7 +33,7 @@
             <el-button @click="changeLanguage('zh')">zh</el-button>
           </fieldset>
         </div>
-      </div>-->
+      </div>
 
       <div class="mb-10px">
         <fieldset>
@@ -103,12 +103,13 @@
 import { useDark, useToggle } from "@vueuse/core";
 
 const { settings } = storeToRefs(useBasicStore())
+// const { config } = storeToRefs(useConfigStore())
 //由于使用了 AutoImport 插件 可以直接引入pinia里的api
 //storeToRefs:引入的store属性具备响应式
 import { useRoute } from 'vue-router'
-// import { useConfigStore } from '@/store/config'
+import { useConfigStore } from '@/store/config'
 
-// const { setTheme, theme, setSize, size } = useConfigStore()
+const { setTheme, setSize } = useConfigStore()
 const route = useRoute()
 const changeLanguage = (langParam) => {
   // setLanguage(langParam, route.meta?.title)

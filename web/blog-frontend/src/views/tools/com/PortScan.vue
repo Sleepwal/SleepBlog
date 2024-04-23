@@ -2,12 +2,12 @@
   <div>
     <ScanTemplate :result="resultPort">
       <template #input>
-        <el-input v-model="targetIp" type="text"
+        <el-input v-model="targetIp" type="text" class="fs-2" size="large"
                   placeholder="请输入目标IP" />
         <el-input v-model="startPort" type="text"
-                  placeholder="请输入起始端口" class="mt-1"/>
+                  placeholder="请输入起始端口" class="mt-1 fs-2" size="large" />
         <el-input v-model="endPort" type="text"
-                  placeholder="请输入结束端口" class="mt-1"/>
+                  placeholder="请输入结束端口" class="mt-1 fs-2" size="large"/>
       </template>
 
       <template #button>

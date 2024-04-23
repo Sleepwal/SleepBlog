@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.sleep.domain.Result;
 import com.sleep.domain.dto.AddOrUpdateCategoryDto;
 import com.sleep.domain.entity.Category;
+import com.sleep.domain.vo.CategoryVo;
+
+import java.util.List;
 
 
 /**
@@ -14,9 +17,9 @@ import com.sleep.domain.entity.Category;
  */
 public interface CategoryService extends IService<Category> {
 
-    Result<?> CategoryList();
+    List<CategoryVo> CategoryList();
 
-    Result<?> allCategoryList();
+    Result<List<CategoryVo>> allCategoryList();
 
     Result<?> addOrUpdateCategory(AddOrUpdateCategoryDto categoryDto);
 

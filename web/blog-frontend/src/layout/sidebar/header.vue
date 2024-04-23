@@ -8,7 +8,8 @@
         <div class="indexNav rowCC">
           <div class="logo m-1">
             <router-link to="/">
-              SleepWalker's Blog
+<!--              SleepWalker's Blog-->
+              双链博客系统
               <!--            <img :src="logo" alt="SleepWalker's Blog"/>-->
             </router-link>
           </div>
@@ -36,12 +37,12 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-
-          <span class="ml-3 fs-15px"><SearchItem/></span>
-          <span class="ml-3 fs-15px"><ThemeButton/></span>
         </div>
 
         <div class="rowCC">
+          <span class="mr-1 fs-15px"><SearchItem/></span>
+          <span class="mr-1 fs-15px"><ThemeButton/></span>
+
           <span v-if="token">
           <div class="user-avatar"
                @click="clickShowDropMenu">

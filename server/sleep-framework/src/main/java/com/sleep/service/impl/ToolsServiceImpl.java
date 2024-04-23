@@ -60,7 +60,7 @@ public class ToolsServiceImpl implements ToolsService {
     /**
      * 端口扫描
      *
-     * @param host      主机
+     * @param host      ip
      * @param startPort 启动端口
      * @param endPort   结束端口
      * @param mode      模式

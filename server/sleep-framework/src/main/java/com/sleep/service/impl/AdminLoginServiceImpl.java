@@ -59,7 +59,8 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         String jwt = JwtUtil.createJWT(userId);
 
         //3.存入redis
-        redisCache.setCacheObject(LOGIN_ADMIN_USER_KEY + userId, loginUser, LOGIN_USER_TIME_TO_LIVE, TimeUnit.DAYS);
+        redisCache.setCacheObject(LOGIN_ADMIN_USER_KEY + userId, loginUser,
+                LOGIN_USER_TIME_TO_LIVE, TimeUnit.DAYS);
 
         //4.封装返回结果
         Map<String, String> map = new HashMap<>();

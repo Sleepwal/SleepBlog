@@ -203,23 +203,14 @@ const commitArticle = () => {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 
-.commit-body {
-  .commit-content {
+.commit-body
+  .commit-content
+    .content-editor
 
-    .content-editor {
-
-    }
-  }
-
-  .commit-body-form {
-    margin: 2% 10%;
-
-    border: 1px solid black;
-
-  }
-
-}
+  .commit-body-form
+    margin: 2% 10%
+    border: 1px solid black
 
 </style>

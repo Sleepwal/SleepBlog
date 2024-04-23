@@ -20,6 +20,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame frame) throws Exception {
         Command command = JSON.parseObject(frame.text(), Command.class);
+
         switch (CommandType.match(command.getCode())) {
             case CONNECTION:
                 ConnectionHandler.execute(ctx, command);

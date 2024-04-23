@@ -93,7 +93,7 @@ html.base-theme {
     --el-button-size: 36px;
     height: var(--el-button-size);
     padding: 8px 30px;
-    font-size: 14px;
+    font-size: 20px;
     //loading
     .is-loading {
       color: var(--el-button-loading-text-color);
@@ -113,7 +113,7 @@ html.base-theme {
     --el-button-size: 40px;
     height: var(--el-button-size);
     padding: 10px 30px;
-    font-size: 14px;
+    font-size: 30px;
   }
 
   .el-button + .el-button {

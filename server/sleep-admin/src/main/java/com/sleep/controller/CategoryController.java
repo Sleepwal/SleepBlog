@@ -35,7 +35,7 @@ public class CategoryController {
     @ApiOperation("查询有文章的类型")
     @GetMapping("/categoryList")
     public Result<?> categoryList() {
-        return categoryService.CategoryList();
+        return Result.success(categoryService.CategoryList());
     }
 
     @ApiOperation("添加或修改分类")

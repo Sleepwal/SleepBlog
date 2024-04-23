@@ -55,6 +55,9 @@ const option = ref({
     text: '文章标签统计',
     left: 'center',
   },
+  textStyle: {
+    fontSize: 23,
+  },
   tooltip: {
     trigger: 'item',
     formatter: '{a} <br/>{b} : {c} ({d}%)',

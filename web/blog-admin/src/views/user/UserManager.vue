@@ -165,12 +165,12 @@ const columns = [
   },{
     label: '用户类型',
     prop: 'typeName',
-    width: 100,
+    width: 180,
     scopedSlots: 'typeName'
   },{
     label: '用户状态',
     prop: 'statusName',
-    width: 100,
+    width: 150,
     scopedSlots: "statusName",
   },{
     label: '邮箱',
@@ -182,7 +182,7 @@ const columns = [
   },{
     label: '操作',
     prop: 'handle',
-    width: 130,
+    width: 180,
     scopedSlots: "handle",
   },
 ]

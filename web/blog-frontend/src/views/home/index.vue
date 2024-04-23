@@ -205,11 +205,11 @@ const getTopAuthorList = () => {
   .left {
     flex: 1;
 
-    &:hover {
-      ~ .right {
-        filter: blur(5px);
-      }
-    }
+    //&:hover {
+    //  ~ .right {
+    //     filter: blur(5px);
+    //   }
+    //}
   }
 
   .right {

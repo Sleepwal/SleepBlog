@@ -1,5 +1,7 @@
 package com.sleep.domain;
 
+import lombok.Getter;
+
 /**
  * 返回结果类枚举
  *
@@ -7,6 +9,7 @@ package com.sleep.domain;
  * @version 1.0
  * @date 2023/5/14 12:26
  */
+@Getter
 public enum ResultEnum {
     SUCCESS(200,"操作成功"),
     NEED_LOGIN(401,"需要登录后操作"),
@@ -40,11 +43,4 @@ public enum ResultEnum {
         this.msg = errorMessage;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
 }

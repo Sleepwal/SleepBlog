@@ -41,7 +41,7 @@
         <el-icon class="icon-align-text"><HomeFilled /></el-icon>
         回到首页
       </router-link>
-      <div class="fs-2 fw-b">欢迎来到我的个人博客</div>
+      <div class=" fw-b">双链博客系统</div>
     </div>
 
     <ToolsBar/>
@@ -97,7 +97,7 @@ const isActive = ref(false)
 
     .wel-container-form {
       position: absolute;
-      top: 5%;
+      top: 2%;
       height: 100%;
       transition: all .6s ease-in-out;
     }

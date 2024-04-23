@@ -6,7 +6,7 @@
     <el-tabs
       class="tools-tabs"
       v-model="activeName"
-      type="border-card">
+      tab-position="left">
       <el-tab-pane label="IP扫描" name="IP扫描">
         <IpScan />
       </el-tab-pane>
@@ -23,9 +23,9 @@
         <Base64 />
       </el-tab-pane>
 
-      <el-tab-pane label="电子木鱼">
-        <MuYu />
-      </el-tab-pane>
+<!--      <el-tab-pane label="电子木鱼">-->
+<!--        <MuYu />-->
+<!--      </el-tab-pane>-->
     </el-tabs>
 
   </div>
@@ -46,10 +46,14 @@ const activeName = ref("IP扫描");
 
 <style lang="scss">
 .tools-index-body {
-  height: 80vh;
+  height: 60vh;
 
   .tools-tabs {
     padding: 0 10%;
+  }
+
+  .el-tabs__item {
+    font-size: 25px;
   }
 }
 </style>

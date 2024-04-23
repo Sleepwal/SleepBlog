@@ -18,6 +18,7 @@ import java.util.List;
 public class ArticleDetailVo {
     private Long id;
     private String title; //标题
+    private String summary; //文章摘要
     private String content;  //文章内容
     private String thumbnail; //缩略图
     private Long categoryId;   //所属分类id

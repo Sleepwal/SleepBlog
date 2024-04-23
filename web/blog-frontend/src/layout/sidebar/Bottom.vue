@@ -27,7 +27,6 @@ import {Timer} from '@element-plus/icons-vue'
 import { getAccessCount, getTotalViewCount } from "@/api/system";
 
 const socialMediaLinks = ref([
-  { name: 'bilibili', url: 'https://space.bilibili.com/156854398', img: 'https://pic2.zhimg.com/v2-58bd7241580b48ecc6aeed62dda2939b_1440w.jpg?source=172ae18b' },
   { name: '知乎', url: 'https://zhuanlan.zhihu.com/p/639105051', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.f0bd97564b85fd953f0d3a416650ef32?rik=%2fSDTEtosZK4hIw&riu=http%3a%2f%2fwww.kuaipng.com%2fUploads%2fpic%2fw%2f2021%2f04-07%2f98963%2fwater_98963_698_698_.png&ehk=8l2O6L%2b3ARFH2w6EYU%2b57FSZ%2fh3noVqeAY4b4%2fZ2%2fr4%3d&risl=&pid=ImgRaw&r=0' },
   { name: 'GitHub', url: 'https://github.com/Sleepwal', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.56080d12be395e2e46ec3ffe951d7201?rik=EKaRF8NImyHtHQ&riu=http%3a%2f%2fbpic.588ku.com%2felement_pic%2f00%2f25%2f58%2f9656d059a2d139b.jpg&ehk=CvLk413bia5qGV3%2bo9cWtjGpNP2jG62gPzmTkJFb54Q%3d&risl=&pid=ImgRaw&r=0' },
 ]);

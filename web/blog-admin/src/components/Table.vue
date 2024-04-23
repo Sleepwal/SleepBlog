@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="table-body">
     <el-table ref="dataTable" border
               :data="dataSource.list || []"
               :height="tableHeight"
@@ -7,6 +7,8 @@
               highlight-current-row
               @row-click="handleRowClick"
               @selection-change="handleSelectionChange">
+      <el-table-column type="selection" width="55" />
+
       <!--selection选择框-->
       <el-table-column v-if="options.selectType && options.selectType === 'checkbox'"
                        type="selection"

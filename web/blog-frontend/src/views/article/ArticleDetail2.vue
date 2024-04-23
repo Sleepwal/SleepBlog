@@ -7,8 +7,8 @@
         </div>-->
 
     <!--  文章信息  -->
-    <div class="article-detail-info center-20 br-2">
-      <div class="title rowCC">{{ articleInfo.title }}</div>
+    <div class="article-detail-info p-2 center-20 br-2">
+      <div class="rowCC fs-3 fw-b">{{ articleInfo.title }}</div>
 
       <div class="article-detail-info-more rowCC mt-1">
         <div class="info-more-item">
@@ -204,14 +204,6 @@ const getDataAndLinks = async () => {
 
   .article-detail-info {
     background-color: var(--grey-1);
-    padding: 20px;
-    width: 50vw;
-
-    .title {
-      font-weight: bold;
-      font-size: 34px;
-      text-align: center;
-    }
 
     .article-detail-info-more {
       //display: flex;

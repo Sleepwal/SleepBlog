@@ -24,7 +24,7 @@ public class CategoryController {
     @ApiOperation("查询文章类型")
     @GetMapping("/getCategoryList")
     public Result<?> CategoryList(){
-        return categoryService.CategoryList();
+        return Result.success(categoryService.CategoryList());
     }
 
 }

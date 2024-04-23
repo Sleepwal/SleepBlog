@@ -1,6 +1,7 @@
 package com.sleep.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sleep.constants.PatternConstants;
@@ -24,6 +25,7 @@ import com.sleep.mapper.ArticleTagRelationMapper;
 import com.sleep.mapper.CategoryMapper;
 import com.sleep.mapper.TagMapper;
 import com.sleep.service.ArticleService;
+import com.sleep.service.CategoryService;
 import com.sleep.utils.BeanCopyUtils;
 import com.sleep.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +54,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Autowired
     private CategoryMapper categoryMapper;
     @Autowired
+    private CategoryService categoryService;
+    @Autowired
     private ArticleTagRelationMapper articleTagRelationMapper;
     @Autowired
     private TagMapper tagMapper;
@@ -60,12 +64,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
 
     /**
-     * 查询前10热门文章，封装ResponseResul返回
+     * 查询前10热门文章，封装Resul返回
      *
      * @author SleepWalker
      */
     @Override
-    public Result<?> hotArticleList() {
+    public Result<List<HotArticleVo>> hotArticleList() {
         LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
         //正式文章，不是草稿
         queryWrapper.eq(Article::getStatus, ARTICLE_STATUS_NORMAL);
@@ -110,15 +114,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             articleListVo.setCategoryName(categoryMapper.selectById(articleListVo.getCategoryId()).getName());
 
             //根据 文章id 查询 tagIds
-            /*List<ArticleTagRelation> tagRelations = articleTagRelationMapper.selectList(new LambdaQueryWrapper<ArticleTagRelation>()
-                    .eq(ArticleTagRelation::getArticleId, articleListVo.getId()));
-
-            //根据 tagIds 查询 name
-            List<String> tagNames = tagRelations.stream()
-                    .map(ArticleTagRelation::getTagId)
-                    .map(t -> tagMapper.selectById(t).getName())
-                    .collect(Collectors.toList());
-            articleListVo.setTagNames(tagNames);*/
             articleListVo.setTagNames(doGetTagNamesByArticleId(articleListVo.getId()));
         });
 
@@ -241,14 +236,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             if (one == null)
                 continue;
             //替换
-//            matcher.appendReplacement(stringBuffer, "<p><a class=\"tooltip\" href=\"http://localhost:5173/ArticleDetail/" + one.getId() + "\">" +
-//                    "<span>$1</span>" +
-//                    "<span class=\"tooltiptext\"><iframe src=\"http://localhost:5173/OnlyArticle/" + one.getId() + "\" width=\"800\" height=\"450\"></iframe></span>" +
-//                    "</a></p>");
             matcher.appendReplacement(stringBuffer, "<p><a class=\"tooltip\" href=\"http://localhost:5173/ArticleDetail/" + one.getId() + "\">" +
                     "<span>$1</span>" +
-                    "<span class=\"tooltiptext\"><a href=\"http://localhost:5173/OnlyArticle/" + one.getId() + "\" width=\"800\" height=\"450\"></a></span>" +
+                    "<span class=\"tooltiptext\"><iframe src=\"http://localhost:5173/OnlyArticle/" + one.getId() + "\"></iframe></span>" +
                     "</a></p>");
+//            matcher.appendReplacement(stringBuffer, "<p><a class=\"tooltip\" href=\"http://localhost:5173/ArticleDetail/" + one.getId() + "\">" +
+//                    "<span>$1</span>" +
+//                    "<span class=\"tooltiptext\"><a href=\"http://localhost:5173/OnlyArticle/" + one.getId() + "\" width=\"800\" height=\"450\"></a></span>" +
+//                    "</a></p>");
 
             outDoubleLink.add(new DataPair(one.getId(), group)); //添加到出链
         }
@@ -257,15 +252,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         articleDetailVo.setOutDoubleLink(outDoubleLink);
 
         //根据 文章id 查询 tagIds
-        /*List<ArticleTagRelation> tagRelations = articleTagRelationMapper.selectList(new LambdaQueryWrapper<ArticleTagRelation>()
-                .eq(ArticleTagRelation::getArticleId, articleDetailVo.getId()));
-
-        //根据 tagIds 查询 name
-        List<String> tagNames = tagRelations.stream()
-                .map(ArticleTagRelation::getTagId)
-                .map(t -> tagMapper.selectById(t).getName())
-                .collect(Collectors.toList());
-        articleDetailVo.setTagNames(tagNames);*/
         articleDetailVo.setTagNames(doGetTagNamesByArticleId(articleDetailVo.getId()));
 
         //返回
@@ -570,7 +556,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
 
     /**
-     * 知识图谱数据
+     * 文章关系图数据
      *
      * @return {@link Result}<{@link ?}>
      */
@@ -597,8 +583,17 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
                 colorMap.put(article.getCategoryId(), convertToHex(generateRandomColor())); // 生成随机颜色
 
             String name = categoryMapper.selectById(article.getCategoryId()).getName();
+            int categoryIndex = 0;
+            List<CategoryVo> vos = categoryService.CategoryList();
+            for (int i = 0; i < vos.size(); i++) {
+                if (Objects.equals(name, vos.get(i).getName())) {
+                    categoryIndex = i;
+                }
+            }
+
 
             ArticleRelationGraphVo graphVo = new ArticleRelationGraphVo(article.getId(), name, article.getTitle(),
+                    categoryIndex,
                     randomX, randomY,
                     new ItemStyle(colorMap.get(article.getCategoryId()))
             );
@@ -608,6 +603,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         return Result.success(voList);
     }
 
+    /**
+     * 文章关系图数据链接
+     *
+     * @return {@link Result}<{@link ?}>
+     */
     @Override
     public Result<?> articleRelationGraphLinks() {
         List<ArticleRelationGraphLinksVo> Links = new ArrayList<>();
@@ -648,9 +648,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
         //1.根据id查询文章
         Article article = getById(id);
-
-        if (Objects.isNull(colorMap.get(article.getCategoryId()))) //该类型没有添加过颜色
-            colorMap.put(article.getCategoryId(), convertToHex(generateRandomColor())); // 生成随机颜色
+        colorMap.put(article.getCategoryId(), convertToHex(generateRandomColor())); // 生成随机颜色
 
         //添加当前文章到nodes中
         ArticleRelationGraphVo curArticle = new ArticleRelationGraphVo(article.getId(),

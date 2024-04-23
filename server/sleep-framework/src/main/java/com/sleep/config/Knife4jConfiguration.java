@@ -31,7 +31,7 @@ public class Knife4jConfiguration {
                         //.title("swagger-bootstrap-ui-demo RESTful APIs")
                         .description("# SleepBlog RESTful APIs")
                         .termsOfServiceUrl("http://www.sleepblog.com/")
-                        .contact(new Contact("SleepWalker", "sleep.com", "sleep@qq.com"))
+                        .contact(new Contact("SleepWalker", "sleep.com", "SleepWalker@qq.com"))
                         .version("1.0")
                         .build())
                 //分组名称

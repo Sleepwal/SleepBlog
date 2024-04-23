@@ -30,6 +30,7 @@ public class IMServer {
 
     public static void start() {
         new ServerBootstrap()
+                // boss 和 worker，boss只负责accept事件，worker负责读写
                 .group(new NioEventLoopGroup(), new NioEventLoopGroup())
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
@@ -41,14 +42,16 @@ public class IMServer {
                                 .addLast(new ChunkedWriteHandler())
                                 // 对http消息聚合，FullHttpRequest、FullHttpResponse
                                 .addLast(new HttpObjectAggregator(1024 * 64))
-                                // websocket
+                                // WebSocket
                                 .addLast(new WebSocketServerProtocolHandler("/"))
+                                // 自定义处理器
                                 .addLast(new WebSocketHandler());
                     }
                 })
                 .bind(8083);
     }
 }
+
 
 
 

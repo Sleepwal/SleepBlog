@@ -3,22 +3,22 @@
         <ScanTemplate>
             <template #input>
                 <el-form>
-                    <el-form-item label="Base64编码">
+                    <el-form-item size="large">
                         <div class="rowBC">
-                            <el-input v-model="text" type="text"
+                            <el-input v-model="text" type="text" class="fs-2"
                                       placeholder="请输入需要编码的字符串"/>
-                            <el-button @click="base64Encode()" type="success" plain>编码</el-button>
+                            <el-button @click="base64Encode()" type="success" class="fs-2" plain>编码</el-button>
                         </div>
                     </el-form-item>
 
                 </el-form>
 
                 <el-form>
-                    <el-form-item label="Base64解码">
+                    <el-form-item size="large">
                         <div class="rowBC">
-                            <el-input v-model="base64Text" type="text" label=""
+                            <el-input v-model="base64Text" type="text" label="" class="fs-2"
                                       placeholder="请输入需要解码的字符串"/>
-                            <el-button @click="base64Decode()" type="success" plain>解码</el-button>
+                            <el-button @click="base64Decode()" type="success" plain class="fs-2">解码</el-button>
                         </div>
                     </el-form-item>
                 </el-form>
@@ -29,7 +29,7 @@
             </template>
 
             <template #custom-result>
-                {{result}}
+              <div class="fs-2">{{result}}</div>
             </template>
         </ScanTemplate>
     </div>

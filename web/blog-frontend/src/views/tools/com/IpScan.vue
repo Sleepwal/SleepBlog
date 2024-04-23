@@ -2,14 +2,14 @@
   <div>
     <ScanTemplate :result="resultIp">
       <template #input>
-        <el-input v-model="startHost" type="text"
+        <el-input v-model="startHost" type="text" size="large" class="fs-2"
                   placeholder="请输入起始IP地址"/>
         <el-input v-model="endHost" type="text"
-                  placeholder="请输入结束IP地址" class="mt-1"/>
+                  placeholder="请输入结束IP地址" class="mt-1 fs-2" size="large"/>
       </template>
 
       <template #button>
-        <el-button @click="submit()" type="success" plain>开始扫描</el-button>
+        <el-button @click="submit()" type="success" plain class="fs-2">开始扫描</el-button>
       </template>
 
       <template #result-header>

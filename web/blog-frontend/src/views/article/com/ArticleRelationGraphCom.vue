@@ -12,12 +12,16 @@ import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useSystemStore } from "@/stores/system";
 
-const { graphNodes, graphLinks, style } = defineProps({
+const { graphNodes, graphLinks, categories, style } = defineProps({
   graphNodes: {
     type: Array,
     default: []
   },
   graphLinks: {
+    type: Array,
+    default: []
+  },
+  categories: {
     type: Array,
     default: []
   },
@@ -39,13 +43,16 @@ const option = {
   darkMode: theme.value === "dark", //暗黑模式
   backgroundColor: theme.value === "dark" ? "#000" : "#fff", //背景
   title: {
-    text: "文章知识图谱"
+    text: "文章关系图"
+  },
+  textStyle: {
+    fontSize: 16,
   },
   legend: {
     show: true,
     orient: "vertical",
     left: "right",
-    data: []
+    data: categories,
   },
   tooltip: {},
   animationDurationUpdate: 1500,
@@ -80,12 +87,14 @@ const option = {
         curveness: 0.1
       },
       data: graphNodes,
-      links: graphLinks
+      links: graphLinks,
+      categories: categories,
     }
   ]
 };
 
 const initChart = () => {
+  console.log(option)
   myChart = echarts.init(chartRef.value);
   myChart.setOption(option);
 

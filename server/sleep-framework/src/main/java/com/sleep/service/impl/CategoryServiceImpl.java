@@ -38,32 +38,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
      * @return {@link Result}<{@link ?}>
      */
     @Override
-    public Result<?> CategoryList() {
-        //1.查出正式文章(状态为0)的类型id
-        LambdaQueryWrapper<Article> articleLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        articleLambdaQueryWrapper.eq(Article::getStatus, ARTICLE_STATUS_NORMAL);
-        List<Article> articleList = articleMapper.selectList(articleLambdaQueryWrapper);
-
-        //2.类型id去重
-        List<Long> idList = articleList.stream()
-                .map(Article::getCategoryId)
-                .distinct()
-                .collect(Collectors.toList()); //toSet就不用distinct
-
-        //3.查找类型id对应的类型名称，status为0
-        List<Category> categoryList = listByIds(idList).stream()
-                .filter(category -> CATEGORY_STATUS_NORMAL.equals(category.getStatus()))
-                .collect(Collectors.toList());
-
-        //设置每个分类有value篇文章
-        List<CategoryVo> categoryVos = BeanCopyUtils.copyBeanList(categoryList, CategoryVo.class);
-        categoryVos.stream().forEach(categoryVo -> {
-            categoryVo.setValue((long)articleList.stream()
-                    .filter(article -> Objects.equals(article.getCategoryId(), categoryVo.getId())).count()
-            );
-        });
-        //4.封装VO，返回
-        return Result.success(categoryVos);
+    public List<CategoryVo> CategoryList() {
+        return doGetCategoryList(false);
     }
 
     /**
@@ -72,26 +48,39 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
      * @return {@link Result}<{@link ?}>
      */
     @Override
-    public Result<?> allCategoryList() {
-        //1.查找所有分裂，status为0
+    public Result<List<CategoryVo>> allCategoryList() {
+        return Result.success(doGetCategoryList(true));
+    }
+
+
+    /**
+     * @param isAllCategory 是否需要全部分类（包括没有文章的分类）
+     * @return {@link List}<{@link CategoryVo}>
+     */
+    private List<CategoryVo> doGetCategoryList(boolean isAllCategory) {
+        //1.查询所有分类，status为0
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Category::getStatus, CATEGORY_STATUS_NORMAL);
         List<Category> categoryList = list(queryWrapper);
 
-        //2.查出正式文章(状态为0)的类型id
+        //2.查询所有正式文章(状态为0)
         LambdaQueryWrapper<Article> articleLambdaQueryWrapper = new LambdaQueryWrapper<>();
         articleLambdaQueryWrapper.eq(Article::getStatus, ARTICLE_STATUS_NORMAL);
         List<Article> articleList = articleMapper.selectList(articleLambdaQueryWrapper);
 
-        //设置每个分类有value篇文章
+        //3.设置每个分类的文章数
         List<CategoryVo> categoryVos = BeanCopyUtils.copyBeanList(categoryList, CategoryVo.class);
-        categoryVos.stream().forEach(categoryVo -> {
+        categoryVos.forEach(categoryVo -> {
             categoryVo.setValue(articleList.stream()
                     .filter(article -> Objects.equals(article.getCategoryId(), categoryVo.getId())).count()
             );
         });
-        //4.封装VO，返回
-        return Result.success(categoryVos);
+
+        if(!isAllCategory) { //不需要全部分类
+            return categoryVos.stream().filter(vo -> vo.getValue() > 0).collect(Collectors.toList());
+        }
+
+        return categoryVos;
     }
 
     @Override

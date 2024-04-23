@@ -1,6 +1,7 @@
 package com.sleep.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * @version 1.0
  * @date 2023/5/14 12:21
  */
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result <T> implements Serializable {
     private Integer code;
@@ -41,7 +43,7 @@ public class Result <T> implements Serializable {
      *
      * @return {@link Result}<{@link ?}>
      */
-    public static Result<?> success() {
+    public static Result success() {
         return new Result<>();
     }
 
@@ -51,8 +53,8 @@ public class Result <T> implements Serializable {
      * @param data 数据
      * @return {@link Result}<{@link ?}>
      */
-    public static Result<?> success(Object data) {
-        Result<Object> result = new Result<>();
+    public static <T> Result<T> success(T data) {
+        Result<T> result = new Result<>();
         if(data != null)
             result.setData(data);
         return result;
@@ -65,7 +67,7 @@ public class Result <T> implements Serializable {
      * @param msg  信息
      * @return {@link Result}<{@link ?}>
      */
-    public static Result<?> fail(int code, String msg) {
+    public static <T> Result<T> fail(int code, String msg) {
         return new Result<>(code, msg);
     }
 
@@ -75,28 +77,16 @@ public class Result <T> implements Serializable {
      * @param enums 枚举
      * @return {@link Result}<{@link ?}>
      */
-    public static Result<?> fail(ResultEnum enums){
+    public static Result fail(ResultEnum enums){
         return new Result<>(enums.getCode(), enums.getMsg());
-    }
-
-    public Integer getCode() {
-        return code;
     }
 
     public void setCode(Integer code) {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public T getData() {
-        return data;
     }
 
     public void setData(T data) {

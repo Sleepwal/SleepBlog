@@ -4,7 +4,7 @@
          class="comment-item">
       <div class="rowSS">
         <el-avatar :size="50" :src="comment.avatar"
-                   class="comment-item-avatar m-1" />
+                   class="comment-item-avatar m-1"/>
 
         <div class="comment-content">
           <div class="rowBC">
@@ -18,36 +18,39 @@
           </div>
 
           <div v-if="isShowReply">
-                        <span class="comment-reply">
-                            <el-button type="danger"
-                                       text
-                                       @click="showReply(comment)"
-                            >回复
-                            </el-button>
-                        </span>
+            <span class="comment-reply">
+                <el-button
+                    text
+                    type="danger"
+                    @click="showReply(comment)"
+                >回复
+                </el-button>
+            </span>
           </div>
 
           <div v-if="comment.isReply">
-                        <textarea v-model="comment.replyText"
-                                  @keyup.enter="addReply(comment)"
-                                  placeholder="请输入评论" style="width: 100%" />
+            <textarea v-model="comment.replyText"
+                      placeholder="请输入评论"
+                      style="width: 100%" @keyup.enter="addReply(comment)"/>
             <div>
-                            <span class="comment-btn"
-                                  @click="addReply(comment)">发送评论</span>
+              <span class="comment-btn"
+                    @click="addReply(comment)">
+                发送评论
+              </span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="comment-children">
-        <comment-list :comments="comment.children"
-                      @addReply="addReply"
-                      v-if="comment.children"
-                      :is-show-reply="false" />
+        <CommentList v-if="comment.children"
+                     :comments="comment.children"
+                     :is-show-reply="false"
+                     @addReply="addReply"/>
       </div>
     </div>
 
-    <el-divider />
+    <el-divider/>
   </div>
 </template>
 
@@ -86,7 +89,10 @@ const timeParse = (date) => {
   const hour = (minute / 60).toFixed(0);
   const day = (hour / 24).toFixed(0);
 
+  console.log("日期：" + day)
+
   if (minute === "0") return "刚刚";
+  if (day >= 2) return old.toLocaleString()
   return day === "0" ? (hour === "0" ? minute + "分钟前" : hour + "小时前") : day + "天前";
 };
 

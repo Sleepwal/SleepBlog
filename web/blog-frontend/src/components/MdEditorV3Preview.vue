@@ -5,19 +5,11 @@
                class="my-md-preview" :style="{ 'width': myWidth + 'vw' }" />
     <!--  目录  -->
     <div class="width-transition" :style="tocStyle" v-if="isShowToc">
-      <el-affix offset="100"
-                target=".my-md-preview-body">
+      <el-affix offset="100" target=".my-md-preview-body">
         <div class="my-md-cate-log p-1">
-          <h2>
-            <el-icon>
-              <Expand />
-            </el-icon>
-            目录
-          </h2>
+          <h2><el-icon><Expand /></el-icon>目录</h2>
 
-          <MdCatalog :editorId="id"
-                     :scrollElement="scrollElement"
-          />
+          <MdCatalog :editorId="id" :scrollElement="scrollElement"/>
         </div>
       </el-affix>
     </div>

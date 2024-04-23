@@ -1,7 +1,7 @@
 <template>
   <div class="chat-msg-body">
     <el-scrollbar
-      height="50vh"
+      height="70vh"
       class="p-1">
       <div
         v-for="(item, index) in receiveMessage"
@@ -18,7 +18,12 @@
                    :src="item.avatar === undefined ? avatarList[index % 7] : item.avatar" />
 
         <div>
-          <div>
+          <div class="rowAE" v-if="item.name === form.nickname">
+            <strong>
+              {{ item.name }}
+            </strong>
+          </div>
+          <div v-else>
             <strong>
               {{ item.name }}
             </strong>
@@ -204,7 +209,7 @@ watch(
       float: left;
       padding: 7px 10px;
       background-color: var(--grey-4);
-      font-size: 14px;
+      font-size: 30px;
       border-radius: 5px;
       max-width: 15vw;
       word-break: break-all;
@@ -232,7 +237,7 @@ watch(
       float: right;
       padding: 7px 10px;
       background-color: var(--grey-4);
-      font-size: 14px;
+      font-size: 30px;
       border-radius: 2px;
       max-width: 15vw;
       word-break: break-all;

@@ -28,8 +28,8 @@
     flex-wrap: wrap;
 
     .category-info {
-      width: 10vw;
-      height: 15vh;
+      width: 15vw;
+      height: 20vh;
       background: var(--grey-1);
       border-radius: 100%;
       transition: all 0.2s ease-out;
@@ -48,7 +48,7 @@
 
       .c-item-name {
         margin: 0 5px;
-        font-size: 18px;
+        font-size: 40px;
         transition: all 0.2s ease-out;
 
         &:hover {
@@ -58,7 +58,7 @@
       }
 
       .c-item-count {
-        font-size: 16px;
+        font-size: 25px;
       }
     }
   }

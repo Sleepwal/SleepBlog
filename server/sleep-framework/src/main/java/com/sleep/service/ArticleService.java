@@ -12,7 +12,7 @@ import com.sleep.domain.entity.Article;
  * @date 2022/12/7 11:29
  */
 public interface ArticleService extends IService<Article> {
-    Result hotArticleList();
+    Result<?> hotArticleList();
 
     Result<?> articleListByPage(Integer pageNum, Integer size, Long categoryId);
 

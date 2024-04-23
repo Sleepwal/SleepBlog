@@ -1,21 +1,19 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* 如果你想要悬停文本下的点 */
+  border-bottom: 1px dotted black;
 
   .tooltiptext {
     display: none;
-    //visibility: hidden;
-    //width: 40vw;
-    background-color: black;
-    color: #fff;
+    background-color: var(--grey-0);
+    color: var(--grey-9);
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
 
     /* 定位工具提示文本 - 请参见下面的示例！ */
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     left: 0;
   }
 
@@ -25,7 +23,6 @@
 .tooltip:hover {
   .tooltiptext {
     display: block;
-    //visibility: visible;
     animation: hideIndex 0.3s;
   }
 }

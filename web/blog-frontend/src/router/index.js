@@ -68,7 +68,7 @@ const router = createRouter({
         {
           path: "ArticleRelationChart",
           name: "ArticleRelationChart",
-          meta: { title: "知识图谱", activePath: "/ArticleRelationChart" },
+          meta: { title: "文章关系", activePath: "/ArticleRelationChart" },
           component: () => import("@/views/article/ArticleRelationChart.vue")
         },
 
@@ -205,7 +205,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, form, next) => {
-  document.title = to.meta.title; //替换标题
+  // document.title = to.meta.title; //替换标题
 
   //路由跳转时定位到页面顶部的方法
   document.body.scrollTop = 0; // chrome

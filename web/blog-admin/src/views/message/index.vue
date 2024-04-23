@@ -72,12 +72,12 @@ const columns = [
   },{
     label: '时间',
     prop: 'time',
-    width: 230,
+    width: 400,
     scopedSlots: "time",
   },{
     label: '操作',
     prop: 'handle',
-    width: 150,
+    width: 160,
     scopedSlots: "handle",
   },
 ]
