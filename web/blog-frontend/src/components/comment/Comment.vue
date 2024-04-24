@@ -3,14 +3,18 @@
        id="c1" ref="comRef">
     <h2>评论区</h2>
 
-    <div>
-        <textarea v-model="text"
-                  @keyup.enter="submit()"
-                  placeholder="请输入评论"
-                  rows="2" cols="70"
+    <div class="rowCC">
+        <el-input
+            v-model="text"
+            @keyup.ctrl.enter="submit()"
+            type="textarea"
+            :autosize="{ minRows: 2 }"
+            placeholder="请输入评论, ctrl+enter发送"
+            show-word-limit
+            maxlength="50"
         />
       <div>
-          <span class="comment-btn"
+          <span class="comment-btn rowCC"
                 @click="submit()">发送评论</span>
       </div>
     </div>
@@ -97,7 +101,8 @@ const comRef = ref();
   }
 
   .comment-btn {
-    margin-top: 10px;
+    width: 80px;
+    height: 50px;
     @include my-btn;
   }
 

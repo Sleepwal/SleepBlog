@@ -29,9 +29,15 @@
           </div>
 
           <div v-if="comment.isReply">
-            <textarea v-model="comment.replyText"
-                      placeholder="请输入评论"
-                      style="width: 100%" @keyup.enter="addReply(comment)"/>
+            <el-input
+                v-model="comment.replyText"
+                @keyup.ctrl.enter="addReply(comment)"
+                type="textarea"
+                :autosize="{ minRows: 2 }"
+                placeholder="请输入评论, ctrl+enter发送"
+                show-word-limit
+                maxlength="50"
+            />
             <div>
               <span class="comment-btn"
                     @click="addReply(comment)">
