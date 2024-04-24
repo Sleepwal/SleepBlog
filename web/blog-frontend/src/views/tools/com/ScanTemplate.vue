@@ -1,6 +1,6 @@
 <template>
   <div class="scan-template-body">
-    <el-card shadow="hover" class="scan-template-input br-2 p-2">
+    <el-card shadow="hover" class="scan-template-input br-2 p-1">
       <div class="rowCC">
         <div class="template-input-left">
           <slot name="input"></slot>
@@ -18,7 +18,7 @@
       </template>
 
       <div class="tools-use-result">
-        <el-button type="primary" v-for="r in result" class="m-1 fs-3"
+        <el-button type="primary" v-for="r in result" class="m-1"
                    plain @click="copy(r)">{{ r }}
         </el-button>
       </div>
@@ -48,9 +48,7 @@ const copy = (value) => {
 
 .scan-template-body
   .scan-template-input
-    margin: 0 15%
-
-  .template-input-left
+   margin: 0 15%
 
   .scan-template-result
     text-align: center

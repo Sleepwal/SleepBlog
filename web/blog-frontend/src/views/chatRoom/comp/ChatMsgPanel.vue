@@ -18,7 +18,7 @@
                    :src="item.avatar === undefined ? avatarList[index % 7] : item.avatar" />
 
         <div>
-          <div class="rowAE" v-if="item.name === form.nickname">
+          <div class="columnBE" v-if="item.name === form.nickname">
             <strong>
               {{ item.name }}
             </strong>
@@ -209,7 +209,7 @@ watch(
       float: left;
       padding: 7px 10px;
       background-color: var(--grey-4);
-      font-size: 30px;
+      font-size: 20px;
       border-radius: 5px;
       max-width: 15vw;
       word-break: break-all;
@@ -237,7 +237,7 @@ watch(
       float: right;
       padding: 7px 10px;
       background-color: var(--grey-4);
-      font-size: 30px;
+      font-size: 20px;
       border-radius: 2px;
       max-width: 15vw;
       word-break: break-all;

@@ -29,7 +29,7 @@
 
     .category-info {
       width: 15vw;
-      height: 20vh;
+      height: 15vh;
       background: var(--grey-1);
       border-radius: 100%;
       transition: all 0.2s ease-out;
@@ -48,7 +48,7 @@
 
       .c-item-name {
         margin: 0 5px;
-        font-size: 40px;
+        font-size: 30px;
         transition: all 0.2s ease-out;
 
         &:hover {
@@ -58,7 +58,7 @@
       }
 
       .c-item-count {
-        font-size: 25px;
+        font-size: 20px;
       }
     }
   }

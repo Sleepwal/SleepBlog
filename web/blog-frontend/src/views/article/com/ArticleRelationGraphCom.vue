@@ -46,7 +46,7 @@ const option = {
     text: "文章关系图"
   },
   textStyle: {
-    fontSize: 16,
+    fontSize: 14,
   },
   legend: {
     show: true,

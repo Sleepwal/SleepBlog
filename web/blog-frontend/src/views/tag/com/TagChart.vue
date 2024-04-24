@@ -56,15 +56,16 @@ const option = ref({
     left: 'center',
   },
   textStyle: {
-    fontSize: 23,
+    fontSize: 18,
   },
   tooltip: {
     trigger: 'item',
     formatter: '{a} <br/>{b} : {c} ({d}%)',
   },
   legend: {
+    // orient: 'horizontal',
     orient: 'vertical',
-    left: 'right',
+    left: 'bottom',
     data: [],
   },
   series: [

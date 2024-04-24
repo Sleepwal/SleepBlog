@@ -1,11 +1,12 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHashHistory, createWebHistory} from "vue-router";
 import Framework from "@/layout/Framework.vue";
 import Framework2 from "@/layout/Framework2.vue";
 import WelcomeView2 from "@/views/welcome/WelcomeView2.vue";
 import HomeFramework from "@/layout/HomeFramework.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: "/wel",

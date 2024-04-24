@@ -46,7 +46,7 @@ const activeName = ref("IP扫描");
 
 <style lang="scss">
 .tools-index-body {
-  height: 60vh;
+  min-height: 60vh;
 
   .tools-tabs {
     padding: 0 10%;

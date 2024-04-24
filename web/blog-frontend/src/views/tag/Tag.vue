@@ -50,7 +50,7 @@ loadTagList()
     .tag-list {
       //display: flex;
       //flex-wrap: wrap;
-      margin: 10px 0;
+      margin: 5px 0;
       padding-top: 30px;
       padding-bottom: 50px;
     }
