@@ -90,10 +90,10 @@ html.base-theme {
 
   .el-button {
     //default
-    --el-button-size: 36px;
+    --el-button-size: 25px;
     height: var(--el-button-size);
-    padding: 8px 30px;
-    font-size: 20px;
+    padding: 4px 20px;
+    font-size: 18px;
     //loading
     .is-loading {
       color: var(--el-button-loading-text-color);
@@ -110,10 +110,10 @@ html.base-theme {
   }
 
   .el-button--large {
-    --el-button-size: 40px;
+    --el-button-size: 37px;
     height: var(--el-button-size);
-    padding: 10px 30px;
-    font-size: 30px;
+    padding: 8px 25px;
+    font-size: var(--el-font-size-large)
   }
 
   .el-button + .el-button {
