@@ -259,6 +259,37 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     /**
+     * 查询文章的详情，无双链
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public ArticleDetailVo onlyArticleDetail(Long id) {
+        //1.根据id查询文章
+        Article article = getById(id);
+
+        //2.查询分类名
+        Category category = categoryMapper.selectById(article.getCategoryId());
+        if (category != null) {
+            article.setCategoryName(category.getName());
+        }
+
+        //3.从redis中查询浏览量
+        Integer viewCount = redisCache.getCacheMapValue(VIEW_COUNT_KEY, id.toString());
+        article.setViewCount(viewCount.longValue());
+
+        //4.封装成VO
+        ArticleDetailVo articleDetailVo = BeanCopyUtils.copyBean(article, ArticleDetailVo.class);
+
+        //根据 文章id 查询 tagIds
+        articleDetailVo.setTagNames(doGetTagNamesByArticleId(articleDetailVo.getId()));
+
+        //返回
+        return articleDetailVo;
+    }
+
+    /**
      * 后台编辑文章详情
      *
      * @param id id
@@ -594,8 +625,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
             ArticleRelationGraphVo graphVo = new ArticleRelationGraphVo(article.getId(), name, article.getTitle(),
                     categoryIndex,
-                    randomX, randomY,
-                    new ItemStyle(colorMap.get(article.getCategoryId()))
+                    randomX, randomY
             );
             voList.add(graphVo);
         });
@@ -727,4 +757,5 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
         return Result.success(new SingleArticleGraphByIdVo(nodes, links));
     }
+
 }

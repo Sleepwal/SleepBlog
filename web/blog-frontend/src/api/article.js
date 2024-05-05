@@ -79,6 +79,16 @@ export function getArticle(articleId) {
     });
 }
 
+export function getOnlyArticle(articleId) {
+    return request({
+        url: "/article/onlyArticleDetail/" + articleId,
+        headers: {
+            isToken: false
+        },
+        method: "get"
+    });
+}
+
 export function updateViewCount(articleId) {
     return request({
         url: "/article/updateViewCount/" + articleId,

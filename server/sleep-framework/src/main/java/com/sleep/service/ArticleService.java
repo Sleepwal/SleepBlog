@@ -5,6 +5,7 @@ import com.sleep.domain.Result;
 import com.sleep.domain.dto.AddArticleDto;
 import com.sleep.domain.dto.admin.UpdateArticleDto;
 import com.sleep.domain.entity.Article;
+import com.sleep.domain.vo.ArticleDetailVo;
 
 /**
  * @author SleepWalker
@@ -43,4 +44,6 @@ public interface ArticleService extends IService<Article> {
     Result<?> articleRelationGraphLinks();
 
     Result<?> singleArticleGraphById(Integer id);
+
+    ArticleDetailVo onlyArticleDetail(Long id);
 }

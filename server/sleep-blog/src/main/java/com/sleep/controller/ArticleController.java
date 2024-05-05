@@ -75,6 +75,12 @@ public class ArticleController {
         return articleService.articleDetail(id);
     }
 
+    @ApiOperation("/查询文章详情，无双链")
+    @GetMapping("/onlyArticleDetail/{id}")
+    public Result<?> onlyArticleDetail(@PathVariable("id") Long id) {
+        return Result.success(articleService.onlyArticleDetail(id));
+    }
+
     @GetMapping("/articleAutoList")
     public Result<?> articleAutoList () {
         return articleService.articleAutoList();
