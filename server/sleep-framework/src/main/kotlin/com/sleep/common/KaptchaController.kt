@@ -60,11 +60,11 @@ open class KaptchaController {
             "admin" -> redisCache!!.setCacheObject(
                 SystemConstants.ADMIN_LOGIN_CAPTCHA_KEY,
                 randomText,
-                60,
+                360,
                 TimeUnit.SECONDS
             )
 
-            else -> redisCache!!.setCacheObject(Constants.KAPTCHA_SESSION_KEY, randomText, 60, TimeUnit.SECONDS)
+            else -> redisCache!!.setCacheObject(Constants.KAPTCHA_SESSION_KEY, randomText, 360, TimeUnit.SECONDS)
         }
 
         val out = response.outputStream

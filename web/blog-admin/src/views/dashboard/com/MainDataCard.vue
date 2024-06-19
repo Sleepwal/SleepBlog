@@ -52,9 +52,9 @@ const loadDataList = async () => {
   dataList.value.data[0] = await getArticleCount()
   dataList.value.data[1] = await getArticleTotalViewCount()
   // dataList.value.data[2] = await getCategoryTotalCount()
-  dataList.value.data[3] = await getUserTotalCount()
-  dataList.value.data[4] = await getCommentCount()
-  dataList.value.data[5] = await getTotalMessageCount()
+  dataList.value.data[2] = await getUserTotalCount()
+  dataList.value.data[3] = await getCommentCount()
+  dataList.value.data[4] = await getTotalMessageCount()
 }
 loadDataList()
 

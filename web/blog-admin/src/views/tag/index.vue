@@ -54,7 +54,7 @@
         </el-form-item>
 
         <el-form-item prop="remark" label="描述">
-          <el-input placeholder="请输入网站描述" v-model="formData.remark"></el-input>
+          <el-input placeholder="请输入标签描述" v-model="formData.remark"></el-input>
         </el-form-item>
 
       </el-form>

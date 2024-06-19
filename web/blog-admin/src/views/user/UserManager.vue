@@ -106,7 +106,7 @@
           <el-radio-group v-model="addFormData.avatar" class="img-list">
             <el-radio v-for="item in imgList"
                       :label="item"
-                      class="img-item">
+                      class="img-item" >
               <Cover :cover="item"/>
             </el-radio>
           </el-radio-group>
@@ -300,7 +300,7 @@ const submitAddForm = () => {
   })
 }
 
-//删除分类
+//删除
 const del = async (id) => {
   let resp = await delUser(id)
   ElMessage.success(resp)
@@ -312,10 +312,11 @@ const del = async (id) => {
 <style lang="scss" scoped>
 
 .img-list {
-  height: 100px;
+  //height: 300px;
 
   .img-item {
     width: 150px;
+    height: 200px;
   }
 }
 

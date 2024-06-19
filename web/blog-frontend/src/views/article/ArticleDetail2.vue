@@ -1,11 +1,5 @@
 <template>
   <div class="article-detail-body slide-in-container">
-    <!--  图片  -->
-    <!--    <div class="detail-image rowCC">
-          <el-image :src="articleInfo.thumbnail" v-if="articleInfo.thumbnail"/>
-          <el-image v-else src="https://tse1-mm.cn.bing.net/th/id/OIP-C.NwSO9j7rpzFkOor_nsUoRgHaEo?pid=ImgDet&rs=1"/>
-        </div>-->
-
     <!--  文章信息  -->
     <div class="article-detail-info p-2 center-20 br-2">
       <div class="rowCC fs-3 fw-b">{{ articleInfo.title }}</div>

@@ -4,7 +4,6 @@
     <div class="tag-contain-text br-2">
       <h2><el-icon><PriceTag /></el-icon>文章标签</h2>
       <div class="tag-list">
-<!--        <TagItem v-for="item in tagList" :data="item"></TagItem>-->
         <WordCloudChart :echartsData="markRaw(tagList)"
                         v-if="isLoadTag"></WordCloudChart>
       </div>

@@ -5,8 +5,8 @@ import WelcomeView2 from "@/views/welcome/WelcomeView2.vue";
 import HomeFramework from "@/layout/HomeFramework.vue";
 
 const router = createRouter({
-  // history: createWebHistory(import.meta.env.BASE_URL),
-  history: createWebHashHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHashHistory(),
   routes: [
     {
       path: "/wel",

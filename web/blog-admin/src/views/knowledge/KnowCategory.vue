@@ -17,14 +17,6 @@
               </template>
             </el-popconfirm>
           </div>
-
-<!--          <a href="javascript:void(0)"
-             :class="[index===0?'not-allow':'']"
-             @click="changeSort(index,'up')"><el-icon><ArrowUpBold /></el-icon></a>
-          <el-divider direction="vertical" />
-          <a href="javascript:void(0)"
-             :class="[index===tableData.list.length - 1?'not-allow':'']"
-             @click="changeSort(index,'down')"><el-icon><ArrowDownBold /></el-icon></a>-->
         </div>
       </template>
     </Table>

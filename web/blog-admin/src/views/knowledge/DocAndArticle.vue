@@ -52,7 +52,7 @@
                       height="540"
                       border>
               <el-table-column prop="title" label="标题" width="200" />
-              <el-table-column prop="summary" label="描述" width="300" />
+              <el-table-column prop="summary" label="描述" />
 
               <el-table-column label="操作" width="100">
                 <template #default="scope">
@@ -78,36 +78,6 @@
 
               </el-table-column>
             </el-table>
-
-<!--            <template v-for="item in knowArticleList">
-
-              <div class="article-list-item rowBC">
-                {{ item.title }}
-
-                <el-divider direction="vertical"></el-divider>
-                {{item.summary}}
-
-                &lt;!&ndash; 按钮 &ndash;&gt;
-                <div>
-                  <div>
-                    <el-button @click="showDetail(item.id)" type="success" :icon="View" text>预览</el-button>
-                  </div>
-
-                  <div>
-                    <el-button @click="editArticle('edit', item)" type="primary" :icon="Edit" text>编辑</el-button>
-                  </div>
-
-                  <div>
-                    <el-popconfirm title="是否要删除该分类?" @confirm="delArticle(item.id)">
-                      <template #reference>
-                        <el-button type="danger" :icon="Delete" text>删除</el-button>
-                      </template>
-                    </el-popconfirm>
-                  </div>
-                </div>
-              </div>
-              <el-divider></el-divider>
-            </template>-->
         </el-card>
       </el-col>
     </el-row>
@@ -118,7 +88,7 @@
       :buttons="dialogConfig.buttons"
       @close="dialogConfig.show = false"
     >
-      <el-form :model="formData" :rules="rules" ref="formDataRef" label-width="70">
+      <el-form :model="formData" :rules="rules" ref="formDataRef" label-width="80">
         <el-form-item prop="title" label="文档名称">
           <el-input placeholder="请输入文档名称" v-model="formData.title"></el-input>
         </el-form-item>
@@ -170,14 +140,14 @@ const columns = [
     prop: 'description'
   },
   {
-    label: '文章数量',
+    label: '文章数',
     prop: 'value',
-    width: 90
+    width: 70
   },
   {
     label: '操作',
     prop: 'handle',
-    width: 150,
+    width: 120,
     scopedSlots: 'handle'
   }
 ]

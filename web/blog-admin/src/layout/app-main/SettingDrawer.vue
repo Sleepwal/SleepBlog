@@ -27,32 +27,15 @@
             <el-button @click="setSize('default')">default</el-button>
             <el-button @click="setSize('small')">small</el-button>
           </fieldset>
-          <fieldset class="ml-5">
-            <legend>设置语言</legend>
-            <el-button @click="changeLanguage('en')">en</el-button>
-            <el-button @click="changeLanguage('zh')">zh</el-button>
-          </fieldset>
+<!--          <fieldset class="ml-5">-->
+<!--            <legend>设置语言</legend>-->
+<!--            <el-button @click="changeLanguage('en')">en</el-button>-->
+<!--            <el-button @click="changeLanguage('zh')">zh</el-button>-->
+<!--          </fieldset>-->
         </div>
       </div>
 
       <div class="mb-10px">
-        <fieldset>
-          <legend>主题</legend>
-
-          <el-button @click="toggleDark()"
-                     text>
-          <span v-if="isDark">
-            默认主题
-            <el-icon size="20"><Sunny /></el-icon>
-          </span>
-
-            <span v-else>
-            暗黑主题
-            <el-icon size="20"><Moon /></el-icon>
-          </span>
-          </el-button>
-        </fieldset>
-
         <fieldset>
           <legend>页面设置</legend>
 
@@ -100,8 +83,6 @@
 </template>
 
 <script setup>
-import { useDark, useToggle } from "@vueuse/core";
-
 const { settings } = storeToRefs(useBasicStore())
 // const { config } = storeToRefs(useConfigStore())
 //由于使用了 AutoImport 插件 可以直接引入pinia里的api
@@ -116,10 +97,6 @@ const changeLanguage = (langParam) => {
 }
 
 const drawerVisible = ref(false)
-
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
-
 
 </script>
 

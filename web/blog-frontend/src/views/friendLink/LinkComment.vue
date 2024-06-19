@@ -1,13 +1,18 @@
-<template>
+.alt<template>
     <div class="comment-body br-2 p-2"
          id="c1" ref="comRef">
       <h2>评论区</h2>
 
       <div>
-        <textarea v-model="text"
-                  @keyup.enter="submit()"
-                  placeholder="请输入评论"
-                  style="width: 100%"/>
+        <el-input
+            v-model="text"
+            @keyup.ctrl.enter="submit()"
+            type="textarea"
+            :autosize="{ minRows: 2 }"
+            placeholder="请输入评论, ctrl+enter发送"
+            show-word-limit
+            maxlength="50"
+        />
         <div>
           <span class="comment-btn"
                 @click="submit()">发送评论</span>

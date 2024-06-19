@@ -15,7 +15,7 @@
           </el-col>
           <el-col :span="5">
             <el-form-item prop="status" label="状态">
-              <el-select v-model="searchFormData.status" clearable placeholder="请选择状态">
+              <el-select v-model="searchFormData.status" clearable placeholder="选择状态">
                 <el-option :value="0" label="已发布"></el-option>
                 <el-option :value="1" label="草稿"></el-option>
               </el-select>
@@ -23,7 +23,7 @@
           </el-col>
           <el-col :span="5">
             <el-form-item prop="category" label="分类">
-              <el-select v-model="searchFormData.categoryId" clearable placeholder="请选择分类">
+              <el-select v-model="searchFormData.categoryId" clearable placeholder="选择分类">
                 <el-option v-for="item in categoryList" :value="item.id" :label="item.name"></el-option>
               </el-select>
             </el-form-item>
@@ -32,9 +32,9 @@
             <el-button type="success" icon="search" @click="loadData">搜索</el-button>
           </el-col>
         </el-row>
-        <el-row>
-          <el-button type="primary" @click="showEdit(0, undefined)" icon="plus">新增文章</el-button>
-        </el-row>
+<!--        <el-row>-->
+<!--          <el-button type="primary" @click="showEdit(0, undefined)" icon="plus">新增文章</el-button>-->
+<!--        </el-row>-->
       </el-form>
     </div>
     <div>
@@ -134,13 +134,13 @@ const columns = [
   {
     label: '封面',
     prop: 'thumbnail',
-    width: 120,
+    width: 65,
     scopedSlots: 'thumbnail'
   },
   {
     label: '标题',
     prop: 'title',
-    width: 180
+    width: 140
   },
   {
     label: '文章摘要',
@@ -149,25 +149,25 @@ const columns = [
   {
     label: '文章状态',
     prop: 'statusName',
-    width: 75,
+    width: 120,
     scopedSlots: 'statusName'
   },
   {
     label: '文章信息',
     prop: 'articleInfo',
-    width: 250,
+    width: 170,
     scopedSlots: 'articleInfo'
   },
   {
     label: '时间',
     prop: 'time',
-    width: 200,
+    width: 100,
     scopedSlots: 'time'
   },
   {
     label: '操作',
     prop: 'handle',
-    width: 120,
+    width: 140,
     scopedSlots: 'handle'
   }
 ]

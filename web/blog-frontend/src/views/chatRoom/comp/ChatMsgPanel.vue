@@ -199,7 +199,7 @@ watch(
       height: 0;
       border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
-      border-right: 5px solid var(--grey-4);
+      border-right: 5px solid var(--color-cyan-light);
       position: absolute;
       left: 0;
       top: 6px;
@@ -208,10 +208,10 @@ watch(
     .content {
       float: left;
       padding: 7px 10px;
-      background-color: var(--grey-4);
-      font-size: 20px;
+      background-color: var(--color-cyan-light);
+      font-size: 30px;
       border-radius: 5px;
-      max-width: 15vw;
+      max-width: 50vw;
       word-break: break-all;
     }
 
@@ -227,7 +227,7 @@ watch(
       height: 0;
       border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
-      border-left: 5px solid var(--grey-4);
+      border-left: 5px solid var(--color-pink-light);
       position: absolute;
       right: 0;
       top: 6px;
@@ -236,10 +236,10 @@ watch(
     .content-right {
       float: right;
       padding: 7px 10px;
-      background-color: var(--grey-4);
-      font-size: 20px;
+      background-color: var(--color-pink-light);
+      font-size: 30px;
       border-radius: 2px;
-      max-width: 15vw;
+      max-width: 50vw;
       word-break: break-all;
     }
   }

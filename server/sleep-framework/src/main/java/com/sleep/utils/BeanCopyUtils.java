@@ -17,7 +17,6 @@ public class BeanCopyUtils {
     }
 
     /**
-     * 复制豆
      * 复制一个Bean的属性
      *
      * @param source 源
@@ -42,7 +41,6 @@ public class BeanCopyUtils {
     }
 
     /**
-     * 复制bean列表
      * 复制BeanList所有Bean的属性
      *
      * @param source 源

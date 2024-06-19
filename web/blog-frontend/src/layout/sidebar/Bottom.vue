@@ -6,7 +6,7 @@
           {{ runningTime }}
         </span>
       </div>
-      <div class="">@Copyright 2023-{{new Date().getFullYear()}} 广东技术师范大学 SleepWalker</div>
+      <div class="">@Copyright 2023-{{new Date().getFullYear()}} SleepWalker</div>
       <div class="footer-info">
         <span>文章总浏览量: {{ visitCount }}</span>
         <span>用户访问量: {{ visitorCount }}</span>

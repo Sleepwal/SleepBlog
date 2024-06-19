@@ -1,14 +1,11 @@
 <template>
   <div>
-<!--    <Suspense>-->
-      <ArticleRelationGraphCom
-          v-if="childReady"
-          :graph-nodes="nodes"
-          :graph-links="links"
-          :categories="categories"
-      />
-<!--    </Suspense>-->
-
+    <ArticleRelationGraphCom
+        v-if="childReady"
+        :graph-nodes="nodes"
+        :graph-links="links"
+        :categories="categories"
+    />
   </div>
 </template>
 

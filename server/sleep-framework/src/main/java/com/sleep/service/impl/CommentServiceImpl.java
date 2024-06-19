@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sleep.constants.MyConstants;
 import com.sleep.domain.Result;
+import com.sleep.domain.entity.Article;
 import com.sleep.domain.entity.Comment;
 import com.sleep.domain.entity.User;
 import com.sleep.domain.vo.CommentVo;
@@ -125,6 +126,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         page(commentPage, queryWrapper);
 
         List<CommentVo> commentVos = replyCommentVoList(commentPage.getRecords());
+
         if (Objects.equals(commentType, MyConstants.LINK_COMMENT)) {
             PageVo<List<CommentVo>> pageVo = new PageVo<>(commentVos, commentPage.getTotal());
             return Result.success(pageVo);
@@ -134,8 +136,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         List<CommentListPageVo> listPageVos = BeanCopyUtils.copyBeanList(commentVos, CommentListPageVo.class);
         listPageVos.stream()
                 .forEach(vo -> {
-                    if (vo.getArticleId() != -1)
-                        vo.setArticleTitle(articleMapper.selectById(vo.getArticleId()).getTitle());
+                    if (vo.getArticleId() != -1) {
+                        Article article = articleMapper.selectById(vo.getArticleId());
+                        String title = article != null ? article.getTitle() : null;
+                        vo.setArticleTitle(title);
+                    }
                     if (vo.getReplyCommentUserId() != -1)
                         vo.setReplyCommentUserName(userMapper.selectById(vo.getReplyCommentUserId()).getNickname());
                 });

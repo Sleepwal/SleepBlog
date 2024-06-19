@@ -22,7 +22,7 @@
     <div class="apply-format rowCC">
       <div class="apply-format-content">
         <p>网站名称：SleepBlog</p>
-        <p>网站简介：Just for fun</p>
+        <p>网站简介：Website Introduction</p>
         <p>网站地址：https://sleep/friendLink</p>
         <p>网站头像：https://sleep/logo.png</p>
       </div>

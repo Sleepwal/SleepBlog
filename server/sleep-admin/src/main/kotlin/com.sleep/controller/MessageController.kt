@@ -25,7 +25,6 @@ open class MessageController {
     @GetMapping("/listPage")
     open fun getMessageList(pageNum:Int, size:Int): Result<*> = messageService!!.messageListByPage(pageNum, size)
 
-
     @PostMapping("/addOrUpdateMessage")
     open fun addOrUpdateMessage(@Validated @RequestBody dto: AddOrUpdateMessageDto):Result<*> {
         if(dto.userId != null)

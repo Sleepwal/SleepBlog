@@ -1,7 +1,7 @@
 <template>
   <div class="cover rowCC">
     <img :src="cover" v-if="cover" alt="1"/>
-    <img v-else src="@/assets/default_cover.png" alt="1"/>
+    <span v-else>default</span>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ const props = defineProps({
 <style lang="scss">
 .cover {
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 10px;
   img {
     width: 100%;
   }

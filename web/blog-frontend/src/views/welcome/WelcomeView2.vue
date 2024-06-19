@@ -163,6 +163,7 @@ const isActive = ref(false)
       position: absolute;
       width: 50%;
       height: 100%;
+      color: var(--grey-9);
       display: flex;
       justify-content: center;
       align-items: center;

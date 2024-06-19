@@ -39,5 +39,14 @@ public class ArticleRelationGraphVo {
         this.y = y;
         this.itemStyle = itemStyle;
     }
+
+    public ArticleRelationGraphVo(Long id, String name, String value, Integer category, Integer x, Integer y) {
+        this.id = id;
+        this.name = name;
+        this.value = value;
+        this.category = category;
+        this.x = x;
+        this.y = y;
+    }
 }
 

@@ -1,17 +1,14 @@
 package com.sleep.controller;
 
 import com.sleep.domain.Result;
-import com.sleep.domain.ResultEnum;
 import com.sleep.domain.dto.UserLoginDto;
-import com.sleep.domain.entity.User;
-import com.sleep.exception.SystemException;
 import com.sleep.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.constraints.NotNull;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author SleepWalker

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-button type="primary" @click="showEdit('add')"
-               class="m-2" icon="plus">留言</el-button>
+<!--    <el-button type="primary" @click="showEdit('add')"-->
+<!--               class="m-2" icon="plus">留言</el-button>-->
 
     <Table :columns="columns" :show-pagination="true"
            :data-source="tableData" :fetch="loadData"

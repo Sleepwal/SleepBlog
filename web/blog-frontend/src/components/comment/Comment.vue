@@ -23,11 +23,6 @@
       <CommentList :comments="comments"
                    @addReply="addReply"></CommentList>
     </div>
-
-    <!--      <div class="jump-comment-button"
-               @click="jumpToComment()">
-            <el-icon><ChatSquare /></el-icon>
-          </div>-->
   </div>
 </template>
 

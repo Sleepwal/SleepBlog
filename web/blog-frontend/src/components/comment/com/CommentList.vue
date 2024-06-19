@@ -10,7 +10,6 @@
           <div class="rowBC">
             <div class="comment-author">{{ comment.nickname }}</div>
             <div> {{ timeParse(comment.createTime) }}</div>
-            <!--                        <div> {{ comment.createTime }}</div>-->
           </div>
 
           <div class="comment-text p-1 br-1">
@@ -122,6 +121,7 @@ const timeParse = (date) => {
 
     .comment-content {
       flex: 1;
+      font-size: 25px;
 
       .comment-author {
         font-weight: bold;
