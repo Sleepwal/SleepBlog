@@ -1,7 +1,7 @@
 <template>
   <div class="footer-item">
     <div>SleepArsenal后台管理系统</div>
-    <div>@Copyright 2023-{{new Date().getFullYear()}} 广东技术师范大学 xx班 xx号 姓名</div>
+    <div>@Copyright 2023-{{new Date().getFullYear()}} SleepWalker</div>
   </div>
 </template>
 
